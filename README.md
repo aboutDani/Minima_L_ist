@@ -2,4 +2,6 @@
 List of things
 
 A simple front-end program (classic list), where you can add stuff ... delete ... and search for something.
-The idea is to keep it elegant and minimal. 
+The idea is to keep it elegant and minimal.
+
+If you wanna try -> https://aboutdani.github.io/Minima_L_ist/
