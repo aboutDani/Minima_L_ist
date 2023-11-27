@@ -30,7 +30,7 @@ addForm.addEventListener('submit', function(e){
 
     // add content
     deleteBtn.textContent = 'delete';
-    bookName.textContent = valore; // che il valore che ho preso sopra
+    bookName.textContent = valore; // è il valore che ho preso sopra
 
     // add classes per lo STILE (per il css) -> styles.css
     bookName.classList.add('name');
