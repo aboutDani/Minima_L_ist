@@ -14,25 +14,20 @@ list.addEventListener('click', function(e){
 const addForm = document.forms['add-book'];
 
 addForm.addEventListener('submit', function(e){
-
-    // Prevenire l'evento di default che sarebbe il refresh della pagine se si clicca il bottone
     e.preventDefault();
     const valore = addForm.querySelector('input[type="text"]').value;
-    //console.log(valore);
-    
-    // resetto il valore di input e sbianco quindi l'input.
     addForm.reset();
 
-    // create elements -> quelli che costituiscono una riga
+    // create elements
     const li = document.createElement('li');
     const bookName = document.createElement('span');
     const deleteBtn = document.createElement('span');
 
     // add content
     deleteBtn.textContent = 'delete';
-    bookName.textContent = valore; // è il valore che ho preso sopra
+    bookName.textContent = valore;
 
-    // add classes per lo STILE (per il css) -> styles.css
+    // add classes
     bookName.classList.add('name');
     deleteBtn.classList.add('delete');
 
@@ -40,14 +35,10 @@ addForm.addEventListener('submit', function(e){
     li.appendChild(bookName);
     li.appendChild(deleteBtn);
     list.appendChild(li);
-
 });
-
-
 
 // hide books
 const hideBox = document.querySelector('#hide');
-//console.log(hideBox);
 hideBox.addEventListener('change', function(e){
     if(hideBox.checked){
         list.style.display = "none";
@@ -68,21 +59,28 @@ searchBar.addEventListener('keyup', function(e){
         } else {
             book.style.display = 'none';
         }
-    })
-})
+    });
+});
 
 // tabbed content
 const tabs = document.querySelector('.tabs');
 const panels = document.querySelectorAll('.panel');
 tabs.addEventListener('click', (e) => {
-  if(e.target.tagName == 'LI'){
-    const targetPanel = document.querySelector(e.target.dataset.target);
-    Array.from(panels).forEach((panel) => {
-      if(panel == targetPanel){
-        panel.classList.add('active');
-      }else{
-        panel.classList.remove('active');
-      }
-    });
-  }
+    if (e.target.tagName === 'LI') {
+        const targetPanel = document.querySelector(e.target.dataset.target);
+        
+        // Se il pannello è già attivo, lo nascondiamo
+        if (targetPanel.classList.contains('active')) {
+            targetPanel.classList.remove('active');
+        } else {
+            // Altrimenti, mostriamo il pannello selezionato e nascondiamo gli altri
+            panels.forEach((panel) => {
+                if (panel === targetPanel) {
+                    panel.classList.add('active');
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
+        }
+    }
 });
